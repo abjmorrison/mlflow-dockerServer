@@ -1,0 +1,20 @@
+### Add the following to the docker-compose file ###
+jupyterlab:
+  restart: always
+  build: ./jupyterlab
+  image: jupyterlab_server
+  container_name: jupyterlab
+  working_dir: /home/${NB_USER}
+  user: root
+  ports:
+    - "${JUPYTER_PORT}:8888"
+  volumes:
+    - ./notebooks:/home/${NB_USER}
+  networks:
+    - frontend
+    - backend
+  environment:
+    - NB_USER=${NB_USER}
+    - CHOWN_HOME=yes
+    - JUPYTER_ENABLE_LAB=yes
+    - JUPYTER_TOKEN=${JUPYTER_TOKEN}
