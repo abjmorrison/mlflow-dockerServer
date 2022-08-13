@@ -9,7 +9,7 @@ Docker Compose is used to build and orchestrate the application which will run o
 <br>
 An example ML script is included in the mlflow directory. <br>
 <br>
-To build and run this application on your local server, run `docker compose --env-file .env up --build`
+To build and run this application on your local server, clone this git repo and run `docker compose --env-file .env up --build`
 <br><br>
 The built images can also be found on Dockerhub:
 [abjmorrison/mlflow-dockerserver](https://hub.docker.com/repository/docker/abjmorrison/mlflow-dockerserver)
