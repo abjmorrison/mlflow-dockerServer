@@ -1,0 +1,57 @@
+version: '3.3'
+
+services:
+    db:
+        restart: always
+        image: postgres:latest
+        container_name: mlflow_db
+        env_file: ./.env
+        expose:
+            - ${DB_PORT}
+        networks:
+            - mydefault
+        ports:
+            - "${DB_PORT}:${DB_PORT}"
+        environment:
+            - POSTGRES_DB=${DB_NAME}
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PW}
+        volumes:
+            - db_datapg:/var/lib/postgresql/data
+
+    app:
+        restart: always
+        build: ./mlflow
+        image: mlflow_server
+        container_name: mlflow_server
+        networks:
+            - mydefault
+        expose:
+            - ${MLFLOW_PORT}
+        ports:
+            - "${MLFLOW_PORT}:${MLFLOW_PORT}"
+        environment:
+            - BACKEND=postgresql://${DB_USER}:${DB_PW}@db:${DB_PORT}/${DB_NAME}
+            - ARTIFACTS=/mlruns
+        volumes:
+            - mlrun_data:/mlruns
+
+        command: 
+            - sh   
+            - -c
+            - mlflow server 
+                --port ${MLFLOW_PORT} 
+                --host 0.0.0.0 
+                --backend-store-uri $${BACKEND} 
+                --default-artifact-root $${ARTIFACTS}
+        depends_on:
+            - db
+
+
+networks:
+    mydefault:
+        driver: bridge
+
+volumes:
+    db_datapg:
+    mlrun_data:
