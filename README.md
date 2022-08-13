@@ -10,3 +10,5 @@ Docker Compose is used to build and orchestrate the application which will run o
 An example ML script is included in the mlflow directory. <br>
 <br>
 Note: for the purposes of this example, a .env file was included to show the environment variables that must be set to run this application. In all other instances, a .env file should not be published to github. 
+<br><br>
+To build and run this application on your local server, run `docker compose --env-file .env up --build
