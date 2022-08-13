@@ -2,9 +2,8 @@ This directory contains initial outline to add JupyterLab to the DS workbench su
 
 To add JupyterLab to the workbench, start with a standard image provided by JupyterLab such as the one found here: https://hub.docker.com/r/jupyter/all-spark-notebook<br>
 
-We’ll need a Dockerfile to build the JupyterLab container properly<br>
-
-Since we’ve already got our docker-compose.yml configured for the rest of the stack, we'll just add a container configuratin for jupyterlab:<br>
+[Dockerfile](https://github.com/abjmorrison/mlflow-dockerServer/blob/main/jupyterlab/Dockerfile): builds the container for JupyterLab<br>
+[docker-compose.yml](https://github.com/abjmorrison/mlflow-dockerServer/blob/main/jupyterlab/docker-compose.yml): add this to the docker-compose.yml to include a JupyterLab container in our mlflow app. <br>
 
 Jupyterlab Service:<br>
 	>> Configure JupyterLab container and image options <br>
