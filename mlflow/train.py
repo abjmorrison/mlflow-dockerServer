@@ -1,6 +1,7 @@
 # The data set used in this example is from http://archive.ics.uci.edu/ml/datasets/Wine+Quality
 # P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
 # Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+# This sample script was sourced from https://github.com/mlflow/mlflow-example/blob/master/train.py and is licensed under APACHE LICENSE 2.0
 
 import os
 import warnings
@@ -44,7 +45,7 @@ if __name__ == "__main__":
     alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
     l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 
-    mlflow.set_tracking_uri("http://localhost:5001")
+    mlflow.set_tracking_uri("http://localhost:5000") #Port 5000 is the default port for mlflow, but you can send results to an alternative port using set_tracking_uri
 
     with mlflow.start_run():
         lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)

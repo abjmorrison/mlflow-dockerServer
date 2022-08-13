@@ -1,1 +1,9 @@
-Read this first. 
+## This repo tests an example mlflow server on the local host. 
+
+MLﬂow: MLﬂow provides facilities for experiment tracking, model management, registry, and deployment interface.
+PostgreSQL database: The PostgreSQL database is the storage layer for MLﬂow for backend metadata.
+Docker Compose is used to build and orchestrate the application which will run on http://localhost:5000
+
+An example ML script is included in the mlflow directory. 
+
+Note: for the purposes of this example, a .env file was included to show the environment variables that must be set to run this application. In all other instances, a .env file should not be published to github. 
